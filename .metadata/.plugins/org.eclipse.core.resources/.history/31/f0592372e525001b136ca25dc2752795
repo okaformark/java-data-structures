@@ -1,0 +1,13 @@
+package multithread;
+
+public class ThreadApplication {
+	
+	public static void main(String[] args) {
+		ThreadClass thread = null;
+		String [] threadName = {"T1","T2","T3","T4","T5","T6","T7","T8","T9","T10"};
+		for(int i = 0; i < threadName.length -1; i++) {	
+			 thread = new ThreadClass(threadName[i]);
+		}
+		thread.MatrixProduct();
+	}
+}

@@ -1,0 +1,10 @@
+package graph;
+
+public class Edge {
+	 Vertex vertex;
+	    int weight;
+    public Edge(Vertex _vertex){
+        vertex = _vertex;
+    }
+	
+}

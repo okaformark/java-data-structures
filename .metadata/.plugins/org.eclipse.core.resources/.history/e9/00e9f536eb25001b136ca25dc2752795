@@ -1,0 +1,41 @@
+package multithread;
+
+import java.util.Random;
+
+public class ThreadApplication {
+	
+	public static void main(String[] args) {
+		
+		int[][] arrA = new int[10][200];
+		int[][] arrB = new int[200][8];
+		int count = 1;
+		int count2 =1600;
+		ThreadClass threadArr = new ThreadClass(arrA,arrB);
+		
+		for(int i = 0;i < arrA.length; i++) {
+			for (int j = 0; j < arrA[i].length;j++) {
+				arrA[i][j] = count;
+				count++;
+			}
+		}
+		ThreadClass.print(arrA);
+		
+//		for(int i = 0;i < arrB.length; i++) {
+//			for (int j = 0; j < arrB[i].length;j++) {
+//				arrB[i][j] = count2;
+//				count--;
+//			}
+//			ThreadClass.print(arrB);
+//		}
+		
+		
+		
+		
+		ThreadClass thread = null;
+		String [] threadName = {"T1","T2","T3","T4","T5","T6","T7","T8","T9","T10"};
+		for(int i = 0; i < threadName.length -1; i++) {	
+			 thread = new ThreadClass(threadName[i]);
+		}
+		thread.MatrixProduct();
+	}
+}

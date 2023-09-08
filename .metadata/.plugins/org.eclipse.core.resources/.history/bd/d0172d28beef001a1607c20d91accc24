@@ -1,0 +1,166 @@
+package LinkedList;
+
+import java.util.*;
+
+
+public class LinkedList
+{
+	public Node header;
+
+	public LinkedList()
+	{
+		header = null;
+	}
+	
+	public final double Average() {
+		double sum =0;
+		int count = 0;
+		Node currentNode = header;
+		while(currentNode!= null) {
+			count++;
+			sum += currentNode.item;
+			currentNode = currentNode.link;
+		}
+		return sum / count;
+	}
+	
+	public final Node SearchNodeWithLargestKey() {
+		Node currentNode = header;
+		Node maxNode = null;
+		while(currentNode != null) {
+			if(currentNode.link.item > header.item) {
+				maxNode = currentNode.link;
+			};
+		}
+		return maxNode;
+	}
+
+	
+//	public final Node DeleteNodeWithLargestKey(Node Item) {
+//		
+//	}
+
+	public final Node Search(int key)
+	{
+		Node current = header;
+		while (current != null && current.item != key)
+		{
+			current = current.link;
+		}
+		return current;
+	}
+
+	public final void Append(int newItem)
+	{
+		Node newNode = new Node(newItem);
+		newNode.link = header;
+		header = newNode;
+	}
+
+	public final Node Remove()
+	{
+		Node x = header;
+		if (header != null)
+		{
+			header = header.link;
+		}
+		return x;
+	}
+
+	public final Node searchPrevious(int key)
+	{
+		if (header == null)
+		{
+			return header;
+		}
+		else
+		{
+			Node current = header;
+			while (!(current.link == null) && (current.link.item != key))
+			{
+				current = current.link;
+			}
+			return current;
+		}
+	}
+
+	public final void Insert(int newItem, int preKey)
+	{
+		Node current;
+		Node newNode = new Node(newItem);
+		current = Search(preKey);
+		if (current == null)
+		{
+			System.out.println("there is no such preKey!");
+		}
+		else
+		{
+			newNode.link = current.link;
+			current.link = newNode;
+		}
+	}
+
+
+	public final void Delete(int key)
+	{
+		if (header == null) // The list is empty!
+		{
+			System.out.println("The list is empty!");
+		}
+		else
+		{
+			if (header.item == key) // header to be deleted.
+			{
+				header = header.link;
+			}
+			else
+			{
+				Node p = searchPrevious(key);
+				if (p.link == null)
+				{
+					System.out.println("There is no such item!");
+				}
+				else
+				{
+					p.link = p.link.link;
+				}
+			}
+		}
+	}
+
+    public final void ShowLinkedList()
+    {
+        if (header == null)
+        	System.out.println("The list is empty!");
+        else
+        {
+            Node current = header;
+            System.out.printf("%1$s->", current.item);
+            while (!(current.link == null))
+            {
+                current = current.link;
+                System.out.printf("%1$s->", current.item);
+
+            }
+            System.out.printf("null");
+            System.out.println();
+        }
+    }
+	public final void PrintList()
+	{
+		if (header == null)
+		{
+			System.out.println("The list is empty!");
+		}
+		else
+		{
+			Node current = header;
+			System.out.println(current.item);
+			while (!(current.link == null))
+			{
+				current = current.link;
+				System.out.println(current.item);
+			}
+		}
+	}
+}

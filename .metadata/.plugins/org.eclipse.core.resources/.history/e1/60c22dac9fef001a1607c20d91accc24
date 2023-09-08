@@ -1,0 +1,12 @@
+package LinkedList;
+
+public class LinkedListApplication {
+
+	public static void main(String[] args) {
+		
+		LinkedList linkedList = new LinkedList();
+		linkedList.Search(1);
+
+	}
+
+}

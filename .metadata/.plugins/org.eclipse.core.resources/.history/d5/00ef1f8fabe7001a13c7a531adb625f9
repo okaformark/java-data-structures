@@ -1,0 +1,91 @@
+package com.datastructure.java;
+import java.util.*;
+
+//student class
+ class Student {
+	public int id;
+	public String name;
+	public float grade;
+	
+	public Student() {
+		System.out.println("Enter Student ID");
+		this.id = Integer.parseInt(new Scanner(System.in).nextLine());
+		
+		System.out.println("Enter Student name");
+		this.name = new Scanner(System.in).nextLine();
+		
+		System.out.println("Enter Student grade");
+		this.grade = Float.parseFloat(new Scanner(System.in).nextLine());
+	}
+}
+
+
+//student statistics class
+class StudentStats{
+	public float aveGrade(Student[] studentArr, int n) {
+		float sum = 0;
+		for (int i = 0; i<n;i++) {
+		sum += studentArr[i].grade;
+		}
+	 return sum/n;
+	}
+	
+	public void highestGrade(Student[] studentArr, int n) {
+		float highestGrade = studentArr[0].grade;
+		int stuIndex=0;
+		for (int i = 1; i < n; i++) {
+			if(highestGrade < studentArr[i].grade) {
+				highestGrade = studentArr[i].grade;
+				stuIndex = i;
+			}
+		}
+		System.out.printf("%1s\t %2s\t %3s\t",studentArr[stuIndex].id, studentArr[stuIndex].name, studentArr[stuIndex].grade);
+		System.out.println();
+}
+	
+	//displays all student
+	public void Display(Student[] studentArr, int n) {
+		for(int i = 0; i< n; i ++){
+			System.out.printf("%1s\t %2s\t %3s\t",studentArr[i].id, studentArr[i].name, studentArr[i].grade);
+			System.out.println();
+		}
+	}
+}
+
+//main class
+
+public class Application{
+	public static void main(String[] args) {
+		
+		//declare variables needed
+		int numOfStudent;
+		float average;
+		
+		Student[] student = new Student[10]; //creates an array and space in memory
+		System.out.println("Enter number of students");
+		numOfStudent = Integer.parseInt(new Scanner(System.in).nextLine());
+		
+		//loops through the number of student entered
+		for(int i = 0; i < numOfStudent; i++) {
+			student[i] = new Student(); // instantiates a new student object from the student class
+		}
+		
+		//instantiates an new studentstats object from the studentstats class
+		StudentStats studentStats = new StudentStats();
+		
+		System.out.printf("STUDENT LIST:");
+		System.out.println();
+		
+		studentStats.Display(student, numOfStudent);
+		
+		
+		average = studentStats.aveGrade(student, numOfStudent);
+		System.out.printf("Average Grade is:" + average);
+		
+		
+		System.out.println("\n\n Student with highest grade is:" );
+		studentStats.highestGrade(student, numOfStudent);
+		
+	}
+}
+

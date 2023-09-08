@@ -1,0 +1,76 @@
+package multithread;
+
+
+public class ThreadClass implements Runnable{
+
+	private Thread thread;
+	private String threadName;
+	private int [][] A;
+	private int [][] B;
+	private int [][] C;
+	int rowA, colA, rowB, colB;
+	
+	public ThreadClass(int [][] matrixA, int[][] matrixB) {
+		A=matrixA;
+		B=matrixB;
+		rowA = A.length;
+		rowB = B.length;
+		colA = A[0].length;
+		colB = B[0].length;
+	
+		C = new int [rowA][colB];
+	}
+	
+	public ThreadClass(String name) {
+		threadName=name;
+	}
+	
+	public int[][] MatrixProduct(){
+		while(threadName != null) {
+			for(int i = 0; i< rowA; i++) {
+				System.out.println("Running on" + threadName);
+				for(int j = 0; j <colB; j ++) {
+					for(int k = 0; k < rowB; k++) {		
+						C[i][j] += A[i][0] * B[i][j];
+						System.out.println(C[i][j]);
+					}
+				}
+			}
+		}
+		return C;
+	}
+	@Override
+	public void run() {
+		System.out.println("Running" + threadName);
+		
+		switch (threadName) {
+		case "T1":
+			
+			//do some;
+		case "T2":
+			//DO SOME
+		case "T3":
+			
+			//do some;
+		case "T4":
+			//DO SOME
+		case "T5":
+			
+			//do some;
+		case "T6":
+			//DO SOME
+		case "T7":
+			
+			//do some;
+		case "T8":
+			//DO SOME
+		case "T9":
+			
+			//do some;
+		case "T10":
+			//DO SOME
+		default:
+			break;
+		}
+	}
+}

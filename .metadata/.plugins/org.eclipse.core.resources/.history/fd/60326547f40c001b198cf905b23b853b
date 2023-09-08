@@ -1,0 +1,26 @@
+package hashTable;
+import java.util.*;
+
+public class Employee {
+	public String name;
+	public Double salary;
+	public int key;
+	
+	public Employee() {
+        System.out.println("Enter name: ");         
+        name = new Scanner(System.in).nextLine();         
+        System.out.println("Enter ID: ");
+        key = Integer.parseInt(new Scanner(System.in).nextLine());
+        System.out.println("Enter Salary: ");
+        salary = Double.parseDouble(new Scanner(System.in).nextLine());
+    }
+    public void Output()
+    {
+        System.out.printf("Name: %1$s, ID: %2$s, Grade: %3$s ", name, key, salary);                  
+    }
+    public String toString()
+    {
+        return String.format("[Name: %1$s, ID: %2$s, Grade: %3$s]", name, key,   salary);    
+    }
+
+}
